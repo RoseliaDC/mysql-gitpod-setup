@@ -1,0 +1,31 @@
+class2.txt
+create database day2;
+create table People (
+ id int NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
+ first_name VARCHAR(50),
+ last_name VARCHAR(50) NOT NULL,
+ age int DEFAULT 18
+ CHECK (age >=18)
+ );
+ INSERT INTO People (first_name, last_name, age) VALUES ('Justin', 'Trudeau', 5);
+ Create Table Addresses (
+    id INT NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
+    fk_people_id INT,
+    street VARCHAR(100),
+    city VARCHAR(50) NOT NULL,
+    country VARCHAR(50) NOT NULL, 
+    INDEX idx_addresses_city (city),
+    foreign KEY (fk_people_id)
+        references People(id)
+        on delete cascade
+ );
+
+ insert into Addresses (fk_people_id, city, country)
+    values (2, 'Ottawa', 'Canada');
+
+ INSERT INTO People (first_name, last_name, age) VALUES ('Queen', 'Elizabeth', 96);
+ INSERT INTO People (first_name, last_name, age) VALUES ('Joe', 'Biden', 55);
+  INSERT INTO People (first_name, last_name, age) VALUES ('Kelly', 'Trudeau', 27);
+
+insert into Addresses (fk_people_id, city, country)
+    values (2, 'London', 'England'), (3, 'Washington', 'US'), (4, 'Ottawa', 'Canada');
